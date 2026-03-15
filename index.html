@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Red Bull × Pole Dance Vietnam</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+  :root {
+    --rb-red: #db0a40;
+    --rb-dark: #0a0a0f;
+    --rb-gold: #f5c542;
+    --rb-blue: #1e3a5f;
+    --rb-white: #f8f8f8;
+    --vn-red: #da251d;
+    --vn-gold: #ffcd00;
+    --glass: rgba(255,255,255,0.06);
+    --glass-border: rgba(255,255,255,0.1);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--rb-dark);
+    color: var(--rb-white);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 50%, rgba(219,10,64,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 70% 50%, rgba(245,197,66,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 80%, rgba(30,58,95,0.2) 0%, transparent 50%);
+    animation: auraPulse 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes auraPulse {
+    0% { transform: rotate(0deg) scale(1); }
+    100% { transform: rotate(3deg) scale(1.05); }
+  }
+
+  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    backdrop-filter: blur(10px);
+    color: var(--rb-gold);
+  }
+
+  .hero-badge .dot {
+    width: 6px; height: 6px;
+    background: var(--rb-gold);
+    border-radius: 50%;
+    animation: blink 2s infinite;
+  }
+
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5.5rem);
+    font-weight: 800;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #fff 0%, #ccc 40%, var(--rb-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero h1 span {
+    background: linear-gradient(135deg, var(--rb-red) 0%, #ff4466 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-sub {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 300;
+    color: rgba(255,255,255,0.6);
+    max-width: 650px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--rb-gold);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+    margin-top: 0.3rem;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2rem;
+    border-radius: 100px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: none;
+  }
+
+  .btn-primary {
+    background: var(--rb-red);
+    color: white;
+    box-shadow: 0 4px 30px rgba(219,10,64,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 40px rgba(219,10,64,0.5);
+  }
+
+  .btn-ghost {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: white;
+    backdrop-filter: blur(10px);
+  }
+
+  .btn-ghost:hover {
+    background: rgba(255,255,255,0.12);
+    transform: translateY(-2px);
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: rgba(255,255,255,0.3);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%,100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-8px); }
+  }
+
+  .scroll-indicator svg { width: 20px; height: 20px; }
+
+  /* ===== SECTIONS ===== */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--rb-red);
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    color: rgba(255,255,255,0.5);
+    font-size: 1rem;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+
+  /* ===== THESIS CARDS ===== */
+  .thesis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .thesis-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .thesis-card:hover {
+    border-color: var(--rb-red);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(219,10,64,0.1);
+  }
+
+  .thesis-card::after {
+    content: '→';
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.2);
+    transition: all 0.3s;
+  }
+
+  .thesis-card:hover::after {
+    color: var(--rb-red);
+    transform: translateX(4px);
+  }
+
+  .card-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.6;
+  }
+
+  .card-tag {
+    display: inline-block;
+    margin-top: 1rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rb-gold);
+    background: rgba(245,197,66,0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 100px;
+  }
+
+  /* ===== TIMELINE ===== */
+  .timeline {
+    position: relative;
+    padding-left: 3rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--rb-red), var(--rb-gold), rgba(255,255,255,0.1));
+  }
+
+  .tl-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 1.5rem;
+  }
+
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -3.55rem;
+    top: 0.3rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--rb-red);
+    box-shadow: 0 0 20px rgba(219,10,64,0.5);
+  }
+
+  .tl-year {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--rb-gold);
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.05em;
+  }
+
+  .tl-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .tl-desc {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+  }
+
+  /* ===== PLAYBOOK COMPARISON ===== */
+  .playbook-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .playbook-table th {
+    background: rgba(219,10,64,0.15);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rb-gold);
+    font-weight: 600;
+  }
+
+  .playbook-table td {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .playbook-table tr:hover td {
+    background: rgba(255,255,255,0.03);
+  }
+
+  .check { color: #4ade80; }
+  .cross { color: rgba(255,255,255,0.2); }
+
+  /* ===== READINESS ===== */
+  .readiness-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 768px) { .readiness-grid { grid-template-columns: 1fr; } }
+
+  .readiness-col h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .readiness-item {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .readiness-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .readiness-icon.done { background: rgba(74,222,128,0.15); color: #4ade80; }
+  .readiness-icon.gap { background: rgba(219,10,64,0.15); color: var(--rb-red); }
+
+  .readiness-text { font-size: 0.85rem; color: rgba(255,255,255,0.6); line-height: 1.5; }
+  .readiness-text strong { color: rgba(255,255,255,0.9); }
+
+  /* ===== PAGES GRID ===== */
+  .pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+
+  .page-card {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .page-card:hover {
+    border-color: rgba(255,255,255,0.25);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+  }
+
+  .page-card .page-status {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+
+  .page-status.live { background: rgba(74,222,128,0.15); color: #4ade80; }
+  .page-status.wip { background: rgba(245,197,66,0.15); color: var(--rb-gold); }
+  .page-status.planned { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.35); }
+
+  .page-card .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .page-card .page-desc {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.35);
+    line-height: 1.5;
+  }
+
+  /* ===== QUOTE ===== */
+  .quote-block {
+    text-align: center;
+    padding: 6rem 2rem;
+    position: relative;
+  }
+
+  .quote-block blockquote {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .quote-block cite {
+    font-style: normal;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    text-align: center;
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--glass-border);
+  }
+
+  footer p {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.1em;
+  }
+
+  /* Dividers */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      Strategic Partnership Proposal
+    </div>
+    <h1>Vietnam's Next <span>Red Bull</span> Sport</h1>
+    <p class="hero-sub">
+      Pole dance is where breakdancing was in 2003 — passionate community, zero major sponsors, Olympic aspirations. No country owns it yet. Vietnam will.
+    </p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Major Sponsors</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Countries w/ Federations</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">6</div>
+        <div class="stat-label">Red Bull Playbook Matches</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">🇻🇳</div>
+        <div class="stat-label">Unclaimed Spiritual Home</div>
+      </div>
+    </div>
+    <div class="cta-row">
+      <a href="#thesis" class="btn btn-primary">The Thesis ↓</a>
+      <a href="#pages" class="btn btn-ghost">Deep Dives</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    Scroll
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</div>
+
+<!-- ===== THESIS ===== -->
+<section id="thesis">
+  <div class="section-label">The Thesis</div>
+  <div class="section-title">Why Pole Dance. Why Vietnam. Why Now.</div>
+  <p class="section-desc">
+    Red Bull enters sports before they peak. Pole dance has everything — athletic spectacle, viral content, untapped community, and zero institutional ownership. Vietnam has the narrative.
+  </p>
+  <div class="thesis-grid">
+    <div class="thesis-card" onclick="location.href='#'">
+      <div class="card-icon">🐂</div>
+      <div class="card-title">The Red Bull Pattern</div>
+      <div class="card-desc">BC One, Cliff Diving, Crashed Ice, Art of Motion, Dance Your Style, Formation — 6 proven entries from fringe to global. Pole dance fits every criterion.</div>
+      <div class="card-tag">Playbook Analysis</div>
+    </div>
+    <div class="thesis-card" onclick="location.href='#'">
+      <div class="card-icon">💪</div>
+      <div class="card-title">Sport, Not Spectacle</div>
+      <div class="card-desc">Strength rivaling gymnastics. Difficulty scores. GAISF Observer Status. WADA compliance. This is athletics — not what the stigma suggests.</div>
+      <div class="card-tag">Athletic Case</div>
+    </div>
+    <div class="thesis-card" onclick="location.href='#'">
+      <div class="card-icon">🇻🇳</div>
+      <div class="card-title">Vietnam Rising</div>
+      <div class="card-desc">Median age 31. 70% under 35. Fitness boom. Cultural reinvention. MT Pop just put Vietnam on Red Bull's dance map. The door is open.</div>
+      <div class="card-tag">Market Opportunity</div>
+    </div>
+    <div class="thesis-card" onclick="location.href='#'">
+      <div class="card-icon">👑</div>
+      <div class="card-title">Women's Power</div>
+      <div class="card-desc">Red Bull Formation proved the model — women's progression → competition → global scale. Pole dance is naturally women-led. Perfect fit.</div>
+      <div class="card-tag">Inclusion Angle</div>
+    </div>
+    <div class="thesis-card" onclick="location.href='#'">
+      <div class="card-icon">🎬</div>
+      <div class="card-title">Content Machine</div>
+      <div class="card-desc">Every trick is a clip. Every performance is a story. Vietnamese locations (Saigon skyline, Hội An, Hạ Long Bay) + pole = Red Bull Media House gold.</div>
+      <div class="card-tag">Media Potential</div>
+    </div>
+    <div class="thesis-card" onclick="location.href='#'">
+      <div class="card-icon">🏅</div>
+      <div class="card-title">Olympic Trajectory</div>
+      <div class="card-desc">GAISF Observer Status (2017). WADA compliance. Same path breaking took — and Red Bull rode that wave from 2004 to Paris 2024 Olympics.</div>
+      <div class="card-tag">Long Game</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== RED BULL PLAYBOOK ===== -->
+<section>
+  <div class="section-label">Proof of Pattern</div>
+  <div class="section-title">Red Bull Has Done This 6 Times</div>
+  <p class="section-desc">
+    Every time: enter an underserved sport, build the premier event, create an athlete pipeline, scale globally. Community size at entry was irrelevant.
+  </p>
+  <table class="playbook-table">
+    <thead>
+      <tr>
+        <th>Sport</th>
+        <th>Entry Year</th>
+        <th>Community at Entry</th>
+        <th>Structure at Entry</th>
+        <th>Current Scale</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>🧊 Crashed Ice</strong></td>
+        <td>2001</td>
+        <td>0 — invented it</td>
+        <td>None</td>
+        <td>Own federation (ATSX)</td>
+      </tr>
+      <tr>
+        <td><strong>🕺 BC One (Breaking)</strong></td>
+        <td>2004</td>
+        <td>~5,000–10,000</td>
+        <td>Fragmented jams</td>
+        <td>85+ events → Olympics 2024</td>
+      </tr>
+      <tr>
+        <td><strong>🏃 Art of Motion</strong></td>
+        <td>2007</td>
+        <td>~2,000–5,000</td>
+        <td>None</td>
+        <td>Premier freerunning comp</td>
+      </tr>
+      <tr>
+        <td><strong>🤿 Cliff Diving</strong></td>
+        <td>2009</td>
+        <td>~50 athletes</td>
+        <td>None</td>
+        <td>World Series, gender parity</td>
+      </tr>
+      <tr>
+        <td><strong>💃 Dance Your Style</strong></td>
+        <td>2018</td>
+        <td>Millions (dance)</td>
+        <td>Local battles</td>
+        <td>80+ countries, 6 years</td>
+      </tr>
+      <tr>
+        <td><strong>🚵‍♀️ Formation</strong></td>
+        <td>2019</td>
+        <td>~50 women freeriders</td>
+        <td>Men-only events</td>
+        <td>→ Women's Rampage 2025</td>
+      </tr>
+      <tr style="background: rgba(219,10,64,0.08);">
+        <td><strong>🩰 Pole Dance</strong></td>
+        <td>2026?</td>
+        <td>Growing, ~500 elite</td>
+        <td>IPSF/POSA (fragmented)</td>
+        <td>🎯 The next entry</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== VISION TIMELINE ===== -->
+<section>
+  <div class="section-label">The Vision</div>
+  <div class="section-title">From Saigon to the World Stage</div>
+  <p class="section-desc">
+    A 5-year arc from grassroots progression sessions to global competition — with Vietnam as the spiritual home.
+  </p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">Year 1 — 2026</div>
+      <div class="tl-title">Red Bull Pole Sessions: Vietnam</div>
+      <div class="tl-desc">Non-competitive progression events in Saigon. Community-building. Content creation. Talent scouting. Following the Formation model — start with empowerment, not competition.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Year 2 — 2027</div>
+      <div class="tl-title">National Competition Circuit</div>
+      <div class="tl-desc">Qualifiers in HCMC, Hanoi, Da Nang. First "Red Bull Pole [Name]" branded competition. 5-10 country qualifiers across Southeast Asia.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Year 3 — 2028</div>
+      <div class="tl-title">Southeast Asian Expansion</div>
+      <div class="tl-desc">Regional finals. 20+ country qualifiers. Red Bull athlete sponsorships for top Vietnamese pole dancers. Documentary series.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Year 4 — 2029</div>
+      <div class="tl-title">Global World Final</div>
+      <div class="tl-desc">World Final hosted in Vietnam. 40+ countries. Red Bull Media House full production. Vietnam established as the sport's spiritual home.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">Year 5 — 2030</div>
+      <div class="tl-title">Olympic Push</div>
+      <div class="tl-desc">Pole sport legitimized at global level. GAISF full membership. Olympic consideration. Vietnam's name on the global sports map — permanently.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== MT POP QUOTE ===== -->
+<div class="quote-block">
+  <blockquote>"MT Pop has put Vietnam on the global street-dance map."</blockquote>
+  <cite>— Red Bull, after MT Pop won Dance Your Style World Final 2024</cite>
+  <p style="margin-top: 2rem; color: rgba(255,255,255,0.35); font-size: 0.9rem;">
+    The relationship between Red Bull and Vietnamese sport culture has never been warmer.<br>
+    <strong style="color: var(--rb-gold);">This is the window.</strong>
+  </p>
+</div>
+
+<div class="divider"></div>
+
+<!-- ===== READINESS ===== -->
+<section>
+  <div class="section-label">Gap Analysis</div>
+  <div class="section-title">What We Have. What We Need.</div>
+  <p class="section-desc">
+    An honest assessment of readiness — and the roadmap to fill every gap before approaching Red Bull.
+  </p>
+  <div class="readiness-grid">
+    <div class="readiness-col">
+      <h3><span style="color: #4ade80;">✓</span> Ready</h3>
+      <div class="readiness-item">
+        <div class="readiness-icon done">✓</div>
+        <div class="readiness-text"><strong>Grassroots studio ecosystem</strong> — RPO in D4 Saigon, 1.5 years, real community</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon done">✓</div>
+        <div class="readiness-text"><strong>Event track record</strong> — Amateur Night, Pole Jam, Saigon Pole Fest</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon done">✓</div>
+        <div class="readiness-text"><strong>Talent development pipeline</strong> — teacher training program, multiple instructors</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon done">✓</div>
+        <div class="readiness-text"><strong>Women-first environment</strong> — natural Formation model fit</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon done">✓</div>
+        <div class="readiness-text"><strong>Business infrastructure</strong> — contracts, admin, community management</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon done">✓</div>
+        <div class="readiness-text"><strong>Content creation muscle</strong> — bilingual, constant social output</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon done">✓</div>
+        <div class="readiness-text"><strong>Strategic advisor</strong> — global tech leadership background</div>
+      </div>
+    </div>
+    <div class="readiness-col">
+      <h3><span style="color: var(--rb-red);">◯</span> Gaps to Fill</h3>
+      <div class="readiness-item">
+        <div class="readiness-icon gap">!</div>
+        <div class="readiness-text"><strong>IPSF/POSA federation link</strong> — need formal connection to global competition structure</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon gap">!</div>
+        <div class="readiness-text"><strong>Vietnam pole census</strong> — map every studio, athlete, competition nationwide</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon gap">!</div>
+        <div class="readiness-text"><strong>Red Bull Vietnam contact</strong> — DO SEA agency, MT Pop connection, sports marketing team</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon gap">!</div>
+        <div class="readiness-text"><strong>Signature city-scale event</strong> — level up from studio events to "Saigon Pole Open"</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon gap">!</div>
+        <div class="readiness-text"><strong>Athletic showcase content</strong> — high-production sport footage, not studio promos</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon gap">!</div>
+        <div class="readiness-text"><strong>Cross-studio coalition</strong> — unite Vietnam's pole scene, not just RPO</div>
+      </div>
+      <div class="readiness-item">
+        <div class="readiness-icon gap">!</div>
+        <div class="readiness-text"><strong>Sizzle reel + pitch deck</strong> — the final package (build substance first)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== DEEP DIVE PAGES ===== -->
+<section id="pages">
+  <div class="section-label">Deep Dives</div>
+  <div class="section-title">Research & Strategy Modules</div>
+  <p class="section-desc">
+    Each module drills into a specific aspect of the pitch. Updated as research progresses.
+  </p>
+  <div class="pages-grid">
+    <a class="page-card" href="#">
+      <div class="page-status live">Research Complete</div>
+      <div class="page-title">🐂 Red Bull Playbook</div>
+      <div class="page-desc">Entry criteria, 6 case studies, athlete program, community thresholds, content ROI model</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status live">Research Complete</div>
+      <div class="page-title">🇻🇳 Red Bull × Vietnam</div>
+      <div class="page-desc">MT Pop connection, DO SEA agency, current SEA portfolio, local contacts</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status live">Research Complete</div>
+      <div class="page-title">👑 Women's Sports Model</div>
+      <div class="page-desc">Red Bull Formation → Rampage pipeline, gender parity playbook, stigma handling</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status live">Research Complete</div>
+      <div class="page-title">🏅 Pole Dance Global Status</div>
+      <div class="page-desc">IPSF/POSA, Olympic lobbying, GAISF status, competition structure, 500 elite athletes</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status wip">In Progress</div>
+      <div class="page-title">🗺️ Vietnam Pole Census</div>
+      <div class="page-desc">Every studio, athlete, competition in Vietnam — mapping the ecosystem</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status wip">In Progress</div>
+      <div class="page-title">🎯 Karen's Role</div>
+      <div class="page-desc">The architect, not the athlete — Katie Holden model, operator positioning</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status planned">Planned</div>
+      <div class="page-title">💪 Athletic Case</div>
+      <div class="page-desc">Difficulty scoring, training regimens, strength data vs gymnastics, injury profiles</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status planned">Planned</div>
+      <div class="page-title">🎬 Content Strategy</div>
+      <div class="page-desc">Sizzle reel plan, location scouting, visual direction, social media campaign</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status planned">Planned</div>
+      <div class="page-title">🌏 Country Branding</div>
+      <div class="page-desc">How countries claimed sports — S. Korea + esports, Brazil + capoeira, Vietnam + pole?</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status planned">Planned</div>
+      <div class="page-title">📊 Pitch Deck</div>
+      <div class="page-desc">The final presentation for Red Bull — numbers, vision, ask</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status planned">Planned</div>
+      <div class="page-title">🤝 Contact Strategy</div>
+      <div class="page-desc">Who to approach, in what order, with what message — the GTM for the pitch itself</div>
+    </a>
+    <a class="page-card" href="#">
+      <div class="page-status planned">Planned</div>
+      <div class="page-title">🎪 Event Blueprint</div>
+      <div class="page-desc">Saigon Pole Open concept — format, venue, production, budget, timeline</div>
+    </a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== CLOSING QUOTE ===== -->
+<div class="quote-block">
+  <blockquote>"No country owns pole dance yet. Vietnam will."</blockquote>
+  <cite>— The pitch, in one line</cite>
+</div>
+
+<footer>
+  <p>Red Bull × Pole Dance Vietnam — Confidential Strategy Document — 2026</p>
+  <p style="margin-top: 0.5rem; font-size: 0.65rem;">Built by Ready Clawer One 🦞</p>
+</footer>
+
+</body>
+</html>

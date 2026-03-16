@@ -541,6 +541,447 @@
     max-width: 1200px;
     margin: 0 auto;
   }
+
+  /* ===== COMMUNITY DIRECTORY ACCORDION ===== */
+  .accordion-section {
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+  }
+
+  .accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    user-select: none;
+  }
+
+  .accordion-header:hover {
+    background: rgba(255,255,255,0.03);
+  }
+
+  .accordion-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+  }
+
+  .accordion-icon {
+    font-size: 1.5rem;
+  }
+
+  .accordion-count {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rb-gold);
+    margin-left: 0.5rem;
+  }
+
+  .accordion-arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .accordion-section.open .accordion-arrow {
+    transform: rotate(180deg);
+    color: var(--rb-red);
+  }
+
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .accordion-section.open .accordion-content {
+    max-height: 5000px;
+  }
+
+  .accordion-inner {
+    padding: 0 2rem 2rem 2rem;
+  }
+
+  /* City Filter */
+  .city-filter {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .city-btn {
+    padding: 0.5rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .city-btn:hover, .city-btn.active {
+    background: var(--rb-red);
+    border-color: var(--rb-red);
+    color: white;
+  }
+
+  /* Studio Cards */
+  .studio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .studio-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .studio-card:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  .studio-card.featured {
+    border-color: var(--rb-red);
+    background: rgba(219,10,64,0.05);
+  }
+
+  .studio-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .studio-card.featured .studio-name::after {
+    content: ' 🔴';
+    font-size: 0.8rem;
+  }
+
+  .studio-location {
+    font-size: 0.8rem;
+    color: var(--rb-gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .studio-meta {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .studio-links {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+  }
+
+  .studio-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .studio-link:hover {
+    color: var(--rb-red);
+  }
+
+  /* Athlete Grid */
+  .athlete-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .athlete-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;
+    transition: all 0.3s;
+  }
+
+  .athlete-card:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+
+  .athlete-card.star {
+    border-color: var(--rb-gold);
+    background: rgba(245,197,66,0.05);
+  }
+
+  .athlete-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rb-red), var(--rb-gold));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .athlete-info {
+    flex: 1;
+  }
+
+  .athlete-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: white;
+  }
+
+  .athlete-card.star .athlete-name::after {
+    content: ' 🌟';
+    font-size: 0.8rem;
+  }
+
+  .athlete-meta {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .athlete-ig {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.7rem;
+    color: var(--rb-gold);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .athlete-ig:hover {
+    color: var(--rb-red);
+  }
+
+  /* Event Timeline */
+  .event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .event-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .event-item:hover {
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .event-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .event-meta {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+  }
+
+  /* Brand Cards */
+  .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .brand-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+
+  .brand-card:hover {
+    border-color: rgba(255,255,255,0.2);
+  }
+
+  .brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .brand-type {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--rb-gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .brand-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .brand-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: var(--rb-red);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .brand-link:hover {
+    color: var(--rb-gold);
+  }
+
+  /* Media Links */
+  .media-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .media-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    transition: all 0.3s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .media-item:hover {
+    border-color: var(--rb-red);
+    transform: translateX(5px);
+  }
+
+  .media-source {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--rb-gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .media-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: white;
+  }
+
+  /* Stats Grid */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-box-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--rb-gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-box-label {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .gap-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .gap-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    background: rgba(219,10,64,0.05);
+    border: 1px solid rgba(219,10,64,0.2);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+  }
+
+  .gap-icon {
+    font-size: 1.5rem;
+  }
+
+  .gap-text {
+    flex: 1;
+  }
+
+  .gap-title {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: var(--rb-red);
+  }
+
+  .gap-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.5;
+  }
 </style>
 </head>
 <body>
@@ -576,6 +1017,7 @@
     </div>
     <div class="cta-row">
       <a href="#thesis" class="btn btn-primary">The Thesis ↓</a>
+      <a href="#community" class="btn btn-ghost">Community Directory</a>
       <a href="#pages" class="btn btn-ghost">Deep Dives</a>
     </div>
   </div>
@@ -905,6 +1347,1027 @@
 
 <div class="divider"></div>
 
+<!-- ===== COMMUNITY DIRECTORY ===== -->
+<section id="community">
+  <div class="section-label">Vietnam Pole Community</div>
+  <div class="section-title">The Full Directory</div>
+  <p class="section-desc">
+    32 studios. 24 named athletes. 5 cities. A thriving ecosystem ready for elevation.
+  </p>
+
+  <!-- Studios Accordion -->
+  <div class="accordion-section">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">🏢</span>
+        <span>Studios <span class="accordion-count">32 Total</span></span>
+      </div>
+      <div class="accordion-arrow">▼</div>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <div class="city-filter">
+          <button class="city-btn active" onclick="filterStudios('all')">All Cities</button>
+          <button class="city-btn" onclick="filterStudios('HCMC')">HCMC (18)</button>
+          <button class="city-btn" onclick="filterStudios('Hanoi')">Hanoi (6)</button>
+          <button class="city-btn" onclick="filterStudios('Da Nang')">Da Nang (3)</button>
+          <button class="city-btn" onclick="filterStudios('Hoi An')">Hoi An (1)</button>
+          <button class="city-btn" onclick="filterStudios('Ha Long')">Ha Long (1)</button>
+          <button class="city-btn" onclick="filterStudios('Nationwide')">Gym Chains (3)</button>
+        </div>
+        <div class="studio-grid" id="studio-container">
+          <!-- HCMC Studios -->
+          <div class="studio-card featured" data-city="HCMC">
+            <div class="studio-name">Ready Poledance One (RPO)</div>
+            <div class="studio-location">HCMC / District 4</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Exotic, Events<br>
+              <strong>Founded:</strong> Aug 2024 | <strong>Owner:</strong> Karen Mai<br>
+              <strong>Instructors:</strong> David Đạt, Gemma Tan, Charlie, Alena
+            </div>
+            <div class="studio-meta">
+              🔴 <strong>CLIENT STUDIO</strong> — Organizes Saigon Pole Festival, Amateur Night, Pole Jam
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/readypdone" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/readypdone" target="_blank" class="studio-link">👍 Facebook</a>
+              <a href="https://linktr.ee/readypdone" target="_blank" class="studio-link">🔗 Links</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Sol Dance Studio</div>
+            <div class="studio-location">HCMC / District 4</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Dance<br>
+              <strong>Address:</strong> Lầu 1, 69 Lê Quốc Hưng, P.12
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/sol.polestudio" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Dream Pole & Dance Studio</div>
+            <div class="studio-location">HCMC / District 3</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Dance<br>
+              <strong>Address:</strong> Lầu 2, 200A Cách Mạng Tháng 8<br>
+              Popular with travelers
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/dream.polestudio" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Peony Pole Studio</div>
+            <div class="studio-location">HCMC / District 3</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole Art (Premium)<br>
+              <strong>Owner:</strong> Sơn Ca Nguyễn<br>
+              <strong>Address:</strong> 183A Trần Quốc Thảo, P.9<br>
+              Premium pole art studio — international standard
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/pole.peony_official" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/pole.peony" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">BEFOX Dance Studio</div>
+            <div class="studio-location">HCMC / District 1</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Strip, Sexy, Aerial Silk, Yoga<br>
+              <strong>Owner:</strong> Kiều Võ Minh Ngọc (Fox)<br>
+              <strong>Address:</strong> Lầu 1, 54 Cao Bá Nhạ<br>
+              62K Facebook likes! Quan Bui teaches workshops here
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/befoxdancestudio" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/befoxdancestudio2" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Foenix Studio</div>
+            <div class="studio-location">HCMC / District 1</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Hoop, Sling, Strip, Heels, Stretching<br>
+              <strong>Owner:</strong> Sophia Phan<br>
+              <strong>Address:</strong> 192 Trần Quang Khải, Tân Định<br>
+              Also runs merch shop
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/foenixstudiovn" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/foenixstudiovn" target="_blank" class="studio-link">👍 Facebook</a>
+              <a href="https://foenixstudio.com" target="_blank" class="studio-link">🌐 Website</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Saigon Dance</div>
+            <div class="studio-location">HCMC / District 3 & Gò Vấp</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole + 20+ dance styles<br>
+              <strong>Founded:</strong> 2008<br>
+              HCMC's largest dance center. 2 locations, 10 practice rooms<br>
+              HQ: 94-96 Đường số 2, Cư Xá Đô Thành, Q3
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/saigondance" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/saigondance" target="_blank" class="studio-link">👍 Facebook</a>
+              <a href="https://saigondance.vn" target="_blank" class="studio-link">🌐 Website</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">M Pole & Aerial (Saigon)</div>
+            <div class="studio-location">HCMC / Bình Thạnh</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Aerial Hoop, Aerial Yoga, Trapeze<br>
+              <strong>Manager:</strong> Ms. Vy<br>
+              <strong>Address:</strong> 180/60A Nguyễn Hữu Cảnh, P.22<br>
+              Part of Vietnam's largest pole studio network (3 locations)
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/m.poleaerial.saigon" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/MPOLEAERIAL" target="_blank" class="studio-link">👍 Facebook</a>
+              <a href="https://m-pole-aerial.dance" target="_blank" class="studio-link">🌐 Website</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Pole Cats Dance Studio</div>
+            <div class="studio-location">HCMC / District 1</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Exotic, Studio Rental<br>
+              <strong>Address:</strong> 144/7 Pasteur, Bến Nghé<br>
+              Offline/Online/Private classes. ~2,660 IG followers
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/polecats.dancestudio" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">VDance Studio</div>
+            <div class="studio-location">HCMC / District 11</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole Art, Sexy Dance, Strip Dance<br>
+              <strong>Address:</strong> 153 Lý Thường Kiệt, P.7<br>
+              One of HCMC's top pole training centers per Vietnamese media
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/vdance.v3t" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Muse Dance Academy</div>
+            <div class="studio-location">HCMC / Phú Nhuận</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Dance<br>
+              <strong>Address:</strong> Lầu 4, 210 Huỳnh Văn Bánh
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/muse.danceacademy" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">The 1995 Studio</div>
+            <div class="studio-location">HCMC / Gò Vấp</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole<br>
+              <strong>Address:</strong> 03 Nguyễn Văn Khối, P.11
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/the1995.pole" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Lys Studio</div>
+            <div class="studio-location">HCMC / Bình Thạnh</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Dance<br>
+              <strong>Address:</strong> 121 Bùi Hữu Nghĩa, P.1<br>
+              5.5K Facebook likes
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/lysstudiovn" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/lysstudiovn" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Queen House Pole Studio</div>
+            <div class="studio-location">HCMC / District 3</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole<br>
+              <strong>Address:</strong> 332/1 Cách Mạng Tháng 8, P.10
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/queenhouse_pole" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Burlesque Dance & Yoga Center</div>
+            <div class="studio-location">HCMC / District 10</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Burlesque, Yoga<br>
+              <strong>Address:</strong> CT11 Tam Đảo
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/burlesqueentertainment" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Sunflower Yoga & Pole Studio</div>
+            <div class="studio-location">HCMC / Bình Tân</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Yoga<br>
+              <strong>Address:</strong> 68/15/7 Chiến Lược, P. Bình Trị Đông
+            </div>
+            <div class="studio-links">
+              <a href="https://facebook.com/sunfloweryogapole" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Múa Cột Việt Nam</div>
+            <div class="studio-location">HCMC</div>
+            <div class="studio-meta">
+              <strong>Type:</strong> Equipment supplier + studio<br>
+              Supplies poles, stage poles, accessories. Also has physical studio space
+            </div>
+            <div class="studio-links">
+              <a href="https://facebook.com/muacotvietnam" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="HCMC">
+            <div class="studio-name">Lớp học nhảy cho nữ TPHCM</div>
+            <div class="studio-location">HCMC</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Strip, Sexy, Aerial<br>
+              Training space for pole dance, strip dance. Active community page<br>
+              5.2K Facebook likes
+            </div>
+            <div class="studio-links">
+              <a href="https://facebook.com/lophocnhayhcm" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <!-- Hanoi Studios -->
+          <div class="studio-card" data-city="Hanoi">
+            <div class="studio-name">Hanoi Pole Mania</div>
+            <div class="studio-location">Hanoi / 3 locations</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole (specialized), Aerial<br>
+              <strong>Founded:</strong> 2015 | <strong>Founder:</strong> Hai Linh Nguyen<br>
+              <strong>Locations:</strong> Tây Hồ, Đống Đa, Long Biên<br>
+              Hanoi's first and longest-running dedicated pole studio. Elevated© certified<br>
+              10.8K Facebook likes
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/hanoipolemania_official" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/HanoiPoleMania" target="_blank" class="studio-link">👍 Facebook</a>
+              <a href="https://hanoipolemania.com" target="_blank" class="studio-link">🌐 Website</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="Hanoi">
+            <div class="studio-name">Icon Pole Studio</div>
+            <div class="studio-location">Hanoi / Hoàn Kiếm</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Stretching, Yoga<br>
+              <strong>Address:</strong> 298 Bạch Đằng<br>
+              Boutique, cosy space. Drop-in via WhatsApp +84854280797<br>
+              ~1,834 IG followers
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/icon.pdstudio" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="Hanoi">
+            <div class="studio-name">PD Premium Studio</div>
+            <div class="studio-location">Hanoi</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Exotic, Lyra Hoop, Aerial Hammock, Twerk, Stretching, Handstand<br>
+              Premium pole & aerial arts studio in Hanoi
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/pdpremiumstudio" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/pdpremiumstudio" target="_blank" class="studio-link">👍 Facebook</a>
+              <a href="https://pdpole.studio" target="_blank" class="studio-link">🌐 Website</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="Hanoi">
+            <div class="studio-name">ThuLê Aerial Art</div>
+            <div class="studio-location">Hanoi</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Pilates, Aerial Fitness<br>
+              <strong>Owner:</strong> Thu Lê<br>
+              Coach online & offline. 1.9K Facebook likes, 5,965 check-ins
+            </div>
+            <div class="studio-links">
+              <a href="https://facebook.com/Thuleaerialart682020" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="Hanoi">
+            <div class="studio-name">ISIS World Dance</div>
+            <div class="studio-location">Hanoi</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Multi-dance center with pole program<br>
+              Mentioned in Vietnamese media as pole dance training location
+            </div>
+          </div>
+
+          <!-- Da Nang Studios -->
+          <div class="studio-card" data-city="Da Nang">
+            <div class="studio-name">M Pole & Aerial (Da Nang)</div>
+            <div class="studio-location">Da Nang / Ngũ Hành Sơn</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Aerial Hoop, Aerial Yoga<br>
+              <strong>Address:</strong> 23 Nguyễn Bá Lân, Bắc Mỹ An<br>
+              Near My Khe Beach. On TripAdvisor
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/m.poleaerial" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/MPOLEAERIAL" target="_blank" class="studio-link">👍 Facebook</a>
+              <a href="https://m-pole-aerial.dance/studio-danang" target="_blank" class="studio-link">🌐 Website</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="Da Nang">
+            <div class="studio-name">PoleFit Dance Studio</div>
+            <div class="studio-location">Da Nang</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Exotic, Aerial Arts<br>
+              Very active — 2,011 IG posts. ~967 followers
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/polefitdancestudiovietnam" target="_blank" class="studio-link">📷 Instagram</a>
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="Da Nang">
+            <div class="studio-name">Pole Dance Da Nang</div>
+            <div class="studio-location">Da Nang</div>
+            <div class="studio-meta">
+              <strong>Status:</strong> Appears closed<br>
+              596 Facebook likes
+            </div>
+            <div class="studio-links">
+              <a href="https://facebook.com/poledancedanang" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <!-- Hoi An -->
+          <div class="studio-card" data-city="Hoi An">
+            <div class="studio-name">M Pole & Aerial (Hoi An)</div>
+            <div class="studio-location">Hoi An</div>
+            <div class="studio-meta">
+              <strong>Styles:</strong> Pole, Aerial Hoop, Aerial Yoga<br>
+              Near An Bàng Beach & old town, in rice fields<br>
+              Part of the M Pole & Aerial network
+            </div>
+            <div class="studio-links">
+              <a href="https://instagram.com/m.poleaerial" target="_blank" class="studio-link">📷 Instagram</a>
+              <a href="https://facebook.com/MPOLEAERIAL" target="_blank" class="studio-link">👍 Facebook</a>
+              <a href="https://m-pole-aerial.dance/studio-hoi-an" target="_blank" class="studio-link">🌐 Website</a>
+            </div>
+          </div>
+
+          <!-- Ha Long -->
+          <div class="studio-card" data-city="Ha Long">
+            <div class="studio-name">Pole Dance Ha Long</div>
+            <div class="studio-location">Ha Long / Quảng Ninh</div>
+            <div class="studio-meta">
+              <strong>Owner:</strong> Linh<br>
+              <strong>First pole studio in Ha Long!</strong><br>
+              New, small but pioneering for the region. 166 Facebook likes
+            </div>
+            <div class="studio-links">
+              <a href="https://facebook.com/PoledancewithLinh" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+
+          <!-- Gym Chains -->
+          <div class="studio-card" data-city="Nationwide">
+            <div class="studio-name">California Fitness & Yoga</div>
+            <div class="studio-location">Nationwide (8+ cities)</div>
+            <div class="studio-meta">
+              <strong>Locations:</strong> Hanoi, HCMC, Da Nang, Nha Trang, Binh Duong, Dong Nai, Vung Tau, Can Tho<br>
+              Vietnam's largest fitness chain. Pole Fit classes at most locations<br>
+              MC Phương Mai (celebrity) trains & promotes pole here
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="Nationwide">
+            <div class="studio-name">Elite Fitness & Spa</div>
+            <div class="studio-location">Hanoi & HCMC</div>
+            <div class="studio-meta">
+              <strong>Type:</strong> Premium gyms with pole dance program<br>
+              Multiple locations in tier-1 cities
+            </div>
+          </div>
+
+          <div class="studio-card" data-city="Nationwide">
+            <div class="studio-name">Pole Dance Vietnam (Community)</div>
+            <div class="studio-location">Vietnam-wide</div>
+            <div class="studio-meta">
+              <strong>Type:</strong> National community Facebook page<br>
+              Connects the pole dance scene nationwide
+            </div>
+            <div class="studio-links">
+              <a href="https://facebook.com/VIETNAMPOLEDANCE" target="_blank" class="studio-link">👍 Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Athletes Accordion -->
+  <div class="accordion-section">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">👑</span>
+        <span>Athletes & Instructors <span class="accordion-count">24 Named</span></span>
+      </div>
+      <div class="accordion-arrow">▼</div>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <div class="athlete-grid">
+          <div class="athlete-card star">
+            <div class="athlete-avatar">QB</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Quân Bùi (Quan Bui)</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Instructor, Performer, Judge<br>
+                Exotic, Pole Art | Freelance / BEFOX workshops<br>
+                🏆 Vietnam's top international pole athlete<br>
+                🎯 Top 15 Sexiest Asia Pacific | Judged competitions in Japan & Germany<br>
+                📺 Featured: Saigoneer, PopSugar, Pole Dance Nomad Top 10
+              </div>
+              <a href="https://instagram.com/quanbui07" target="_blank" class="athlete-ig">📷 @quanbui07 (87K followers)</a>
+            </div>
+          </div>
+
+          <div class="athlete-card star">
+            <div class="athlete-avatar">KM</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Karen Mai</div>
+              <div class="athlete-meta">
+                <strong>HCMC / District 4</strong> | Studio Owner<br>
+                Pole, Community Events | Ready Poledance One<br>
+                🔴 <strong>CLIENT</strong> — Founded RPO Aug 2024<br>
+                Organizes: Saigon Pole Festival, Amateur Night, Pole Jam
+              </div>
+              <a href="https://instagram.com/readypdone" target="_blank" class="athlete-ig">📷 @readypdone</a>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">HL</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Hai Linh Nguyen</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Studio Founder, Instructor<br>
+                Pole Sport, Pole Art | Hanoi Pole Mania<br>
+                🏆 3rd Belgian Pole Championships 2014<br>
+                🏆 4th Professional Championship 2015<br>
+                Belgian-Vietnamese engineer. Elevated© certified. Founded HPM 2015
+              </div>
+              <a href="https://instagram.com/hanoipolemania_official" target="_blank" class="athlete-ig">📷 @hanoipolemania_official</a>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">TT</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Tiên Tran (Thủy Tiên)</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Instructor, Management<br>
+                Chic & sensual | Hanoi Pole Mania<br>
+                🏆 NZ Amateur Pole Performer 2015 Winner (Wellington)<br>
+                Pole dancing since 2014. HPM instructor since 2017
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">NK</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Natsuki Kon</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Instructor, Management<br>
+                Musical, sensual | Hanoi Pole Mania<br>
+                Japanese. Professional salsa dancer & instructor. At HPM since 2016
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">MD</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Mai Đặng (Mai Au)</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Instructor<br>
+                Powerful, passionate | Hanoi Pole Mania<br>
+                Started 2018, teaching since 2020. Featured in Saigoneer HPM 4th Year Showcase
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">FX</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Kiều Võ Minh Ngọc (Fox)</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Studio Owner<br>
+                Pole, Strip, Sexy | BEFOX Dance Studio<br>
+                Owner of BEFOX — one of HCMC's biggest pole communities (62K FB likes)
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">SP</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Sophia Phan</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Studio Owner<br>
+                Pole, Hoop, Sling | Foenix Studio<br>
+                Also runs merch/digital products business
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">SC</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Sơn Ca Nguyễn</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Studio Owner<br>
+                Pole Art | Peony Pole Studio<br>
+                Owner of premium international-standard pole art studio
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">MV</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Ms. Vy</div>
+              <div class="athlete-meta">
+                <strong>HCMC / Da Nang / Hoi An</strong> | Studio Manager<br>
+                Pole, Aerial | M Pole & Aerial<br>
+                Manages Vietnam's largest pole studio network (3 locations)<br>
+                Contact: +84 985 354 904
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">TL</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Thu Lê</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Studio Owner, Coach<br>
+                Pole, Pilates, Aerial | ThuLê Aerial Art<br>
+                Online & offline coaching. 5,965 FB check-ins
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">PM</div>
+            <div class="athlete-info">
+              <div class="athlete-name">MC Phương Mai</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Celebrity practitioner<br>
+                Pole Fit | California Fitness<br>
+                Famous Vietnamese MC/model. Publicly promotes pole dancing
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">DD</div>
+            <div class="athlete-info">
+              <div class="athlete-name">David Đạt</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Instructor<br>
+                Ready Poledance One (RPO)
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">GT</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Gemma Tan</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Instructor<br>
+                Ready Poledance One (RPO)
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">CH</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Charlie</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Instructor<br>
+                Ready Poledance One (RPO)
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">AL</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Alena</div>
+              <div class="athlete-meta">
+                <strong>HCMC</strong> | Instructor<br>
+                Ready Poledance One (RPO)
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">TN</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Thuy Trang Nguyen</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Instructor<br>
+                Sexy, musical | Hanoi Pole Mania<br>
+                Background in sexy dance & belly dance. Teaching since 2021
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">KD</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Kim Dorothy</div>
+              <div class="athlete-meta">
+                <strong>Hanoi (guest from Korea)</strong> | Guest Instructor<br>
+                Spinning pole, flexibility | Hanoi Pole Mania<br>
+                7 years pole experience
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">DL</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Điệp Lê</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Instructor<br>
+                Sensual, flexible | Hanoi Pole Mania<br>
+                Started pole 2020. Strong musical background
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">DN</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Dương Ngô</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Instructor<br>
+                Calm, technical | Hanoi Pole Mania<br>
+                Student since 2022, promoted to instructor
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">TD</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Trang Đào</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Instructor<br>
+                Hanoi Pole Mania
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">AM</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Amelie</div>
+              <div class="athlete-meta">
+                <strong>Hanoi</strong> | Instructor<br>
+                Fun, humorous | Hanoi Pole Mania<br>
+                Teaches Wed & Sat at Âu Cơ and Long Biên locations
+              </div>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">KL</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Khánh Linh E.</div>
+              <div class="athlete-meta">
+                <strong>Vietnam</strong> | Performer/Model<br>
+                Pole Art<br>
+                Featured wearing Spincess pole wear. Pole dance model
+              </div>
+              <a href="https://instagram.com/khanhlinhe" target="_blank" class="athlete-ig">📷 @khanhlinhe</a>
+            </div>
+          </div>
+
+          <div class="athlete-card">
+            <div class="athlete-avatar">LY</div>
+            <div class="athlete-info">
+              <div class="athlete-name">Ly (Ly's Pole Studio)</div>
+              <div class="athlete-meta">
+                <strong>HCMC → USA</strong> | Founder (now US-based)<br>
+                Pole, Martial Arts | Now operates in San Jose, CA<br>
+                Vietnamese-born. Founded LPS Jan 2014 in HCMC. Martial arts since age 10<br>
+                Example of VN pole diaspora
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Events Accordion -->
+  <div class="accordion-section">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">🎪</span>
+        <span>Key Events & Competitions</span>
+      </div>
+      <div class="accordion-arrow">▼</div>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <div class="event-list">
+          <div class="event-item">
+            <div class="event-name">Saigon Pole Festival</div>
+            <div class="event-meta">
+              <strong>Organizer:</strong> Ready Poledance One (RPO) — Karen Mai<br>
+              <strong>Location:</strong> HCMC<br>
+              <strong>Frequency:</strong> Annual<br>
+              Major community gathering for Vietnam's pole scene
+            </div>
+          </div>
+
+          <div class="event-item">
+            <div class="event-name">Amateur Night</div>
+            <div class="event-meta">
+              <strong>Organizer:</strong> RPO<br>
+              <strong>Location:</strong> HCMC<br>
+              <strong>Frequency:</strong> Recurring<br>
+              Community performance night — safe space for beginners to showcase
+            </div>
+          </div>
+
+          <div class="event-item">
+            <div class="event-name">Pole Jam</div>
+            <div class="event-meta">
+              <strong>Organizer:</strong> RPO<br>
+              <strong>Location:</strong> HCMC<br>
+              <strong>Frequency:</strong> Recurring<br>
+              Open practice / jam session format — community building
+            </div>
+          </div>
+
+          <div class="event-item">
+            <div class="event-name">Hanoi Pole Mania Showcase</div>
+            <div class="event-meta">
+              <strong>Organizer:</strong> Hanoi Pole Mania<br>
+              <strong>Location:</strong> Hanoi<br>
+              <strong>Frequency:</strong> Annual<br>
+              At least 4+ years running (referenced in 2019 Saigoneer article)
+            </div>
+          </div>
+
+          <div class="event-item">
+            <div class="event-name">Pole & Yoga Vietnam Retreat</div>
+            <div class="event-meta">
+              <strong>Organizer:</strong> TrovaTrip / Phoenix Kazree<br>
+              <strong>Location:</strong> Da Nang / Hoi An (M Pole & Aerial)<br>
+              <strong>Date:</strong> May 2026<br>
+              International workshop retreat — Vietnam as pole tourism destination
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brands Accordion -->
+  <div class="accordion-section">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">🛍️</span>
+        <span>Vietnamese Pole Brands</span>
+      </div>
+      <div class="accordion-arrow">▼</div>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <div class="brand-grid">
+          <div class="brand-card">
+            <div class="brand-name">Spincess</div>
+            <div class="brand-type">🇻🇳 Pole Wear Brand</div>
+            <div class="brand-desc">
+              Vietnam-born brand. 5,000+ sets sold, shipped to 30+ countries. Vietnamese brocade designs. 
+              Founded by "three girls who learnt and became in love with pole." Premium fabrics.
+              <br><br>
+              <strong>Potential Red Bull co-brand partner</strong> — globally shipping Vietnamese pole wear brand
+            </div>
+            <a href="https://instagram.com/spincess.vn" target="_blank" class="brand-link">📷 @spincess.vn →</a>
+          </div>
+
+          <div class="brand-card">
+            <div class="brand-name">Múa Cột Việt Nam</div>
+            <div class="brand-type">Equipment Supplier</div>
+            <div class="brand-desc">
+              Supplies poles, stage poles, accessories in Vietnam. Also operates a physical studio space (154 check-ins).
+              787 Facebook likes.
+            </div>
+            <a href="https://facebook.com/muacotvietnam" target="_blank" class="brand-link">👍 Facebook →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Media Coverage Accordion -->
+  <div class="accordion-section">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">📰</span>
+        <span>Media Coverage</span>
+      </div>
+      <div class="accordion-arrow">▼</div>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <div class="media-list">
+          <a href="https://saigoneer.com/saigon-health-wellness/23919-how-exotic-pole-dance-challenges-both-personal-limits-and-gender-stereotypes" target="_blank" class="media-item">
+            <div class="media-source">Saigoneer (2022)</div>
+            <div class="media-title">"How Exotic Pole Dance Challenges Both Personal Limits and Gender Stereotypes" — Deep feature on Quân Bùi</div>
+          </a>
+
+          <a href="https://saigoneer.com/saigon-health-wellness/17253-from-strip-clubs-to-fitness-clubs-how-millennials-made-pole-dancing-great-again" target="_blank" class="media-item">
+            <div class="media-source">Saigoneer (2019)</div>
+            <div class="media-title">"From Strip Clubs to Fitness Clubs: How Millennials Made Pole Dancing Great Again" — Mai Au performing at HPM showcase</div>
+          </a>
+
+          <a href="#" target="_blank" class="media-item">
+            <div class="media-source">Chao Hanoi (2020)</div>
+            <div class="media-title">"Hanoi embraces pole dancing mania" — Profile of Hai Linh Nguyen and Hanoi Pole Mania</div>
+          </a>
+
+          <a href="#" target="_blank" class="media-item">
+            <div class="media-source">PopSugar</div>
+            <div class="media-title">Feature on Quan Bui "Pole Merman" TikTok virality</div>
+          </a>
+
+          <a href="#" target="_blank" class="media-item">
+            <div class="media-source">Eastern Standard Times</div>
+            <div class="media-title">"Vietnam's Pole Dancing Merman Quan Bui" podcast/feature</div>
+          </a>
+
+          <a href="#" target="_blank" class="media-item">
+            <div class="media-source">Pole Dance Nomad (2025)</div>
+            <div class="media-title">"10 Inspiring Pole Dancers" — Quan Bui listed as Top 15 Sexiest Asia Pacific</div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scene Analysis Accordion -->
+  <div class="accordion-section">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">📊</span>
+        <span>Scene Analysis & Insights</span>
+      </div>
+      <div class="accordion-arrow">▼</div>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-inner">
+        <div class="stats-grid">
+          <div class="stat-box">
+            <div class="stat-box-num">32</div>
+            <div class="stat-box-label">Studios Total</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num">18</div>
+            <div class="stat-box-label">HCMC Studios (~60%)</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num">6</div>
+            <div class="stat-box-label">Hanoi Studios</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num">24</div>
+            <div class="stat-box-label">Named Athletes</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num">5</div>
+            <div class="stat-box-label">Cities Represented</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-box-num">800-1500</div>
+            <div class="stat-box-label">Est. Practitioners</div>
+          </div>
+        </div>
+
+        <h3 style="margin: 2rem 0 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem;">Key Insights</h3>
+        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 2rem;">
+          • <strong style="color: var(--rb-gold);">HCMC-dominated scene</strong> — ~60% of dedicated studios are in Ho Chi Minh City<br>
+          • <strong style="color: var(--rb-gold);">Hanoi is #2 but growing fast</strong> — Hanoi Pole Mania now has 3 locations<br>
+          • <strong style="color: var(--rb-gold);">Da Nang / Hoi An emerging as pole tourism destination</strong> — TrovaTrip retreats, beach-side studios<br>
+          • <strong style="color: var(--rb-gold);">Geographic expansion</strong> — Ha Long just got its first studio (pioneering tier-2 cities)<br>
+          • <strong style="color: var(--rb-gold);">Quân Bùi is the undisputed star</strong> — 87K IG, viral TikTok, international judge<br>
+          • <strong style="color: var(--rb-gold);">BEFOX has biggest FB community</strong> — 62K likes (Facebook still dominates Vietnam social)<br>
+          • <strong style="color: var(--rb-gold);">California Fitness provides widest reach</strong> — Pole classes across 8+ cities nationwide<br>
+          • <strong style="color: var(--rb-gold);">Spincess is globally shipping</strong> — Vietnamese pole wear brand in 30+ countries<br>
+          • <strong style="color: var(--rb-gold);">RPO's events are Red Bull-ready</strong> — Saigon Pole Festival, Amateur Night, Pole Jam = grassroots activations
+        </div>
+
+        <h3 style="margin: 2rem 0 1rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.2rem; color: var(--rb-red);">Critical Gaps = Red Bull Opportunities</h3>
+        <div class="gap-list">
+          <div class="gap-item">
+            <div class="gap-icon">🎯</div>
+            <div class="gap-text">
+              <div class="gap-title">No Major Brand Sponsorship</div>
+              <div class="gap-desc">The entire Vietnamese pole scene operates on studio revenue alone. No corporate sponsor, no sports brand, no energy drink partner. The field is wide open.</div>
+            </div>
+          </div>
+
+          <div class="gap-item">
+            <div class="gap-icon">🏆</div>
+            <div class="gap-text">
+              <div class="gap-title">No National Competition Structure</div>
+              <div class="gap-desc">Events are studio-level or city-level. No unified national championship, no qualifier system, no pathway to international competitions. Red Bull could build this.</div>
+            </div>
+          </div>
+
+          <div class="gap-item">
+            <div class="gap-icon">🎬</div>
+            <div class="gap-text">
+              <div class="gap-title">No High-Production Content</div>
+              <div class="gap-desc">Studio promos and social clips exist. Professional sport cinematography, documentary storytelling, Red Bull Media House-level content does not. Untapped visual potential.</div>
+            </div>
+          </div>
+
+          <div class="gap-item">
+            <div class="gap-icon">🤝</div>
+            <div class="gap-text">
+              <div class="gap-title">Fragmented Community</div>
+              <div class="gap-desc">Studios operate independently. No federation, no cross-studio coalition, no unified voice for the sport. Red Bull could be the unifying force.</div>
+            </div>
+          </div>
+
+          <div class="gap-item">
+            <div class="gap-icon">🌍</div>
+            <div class="gap-text">
+              <div class="gap-title">No National Identity for the Sport</div>
+              <div class="gap-desc">Vietnam hasn't claimed pole dance as "its" sport yet. South Korea claimed esports. Brazil claimed capoeira. Vietnam + pole dance = unclaimed territory.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 3rem; padding: 2rem; background: rgba(219,10,64,0.08); border: 1px solid rgba(219,10,64,0.3); border-radius: 12px; text-align: center;">
+          <div style="font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--rb-gold);">
+            The Infrastructure Exists. The Talent Exists. The Community Exists.
+          </div>
+          <div style="font-size: 0.85rem; color: rgba(255,255,255,0.5);">
+            What's missing is the organizing force to elevate it from grassroots to global stage.<br>
+            That's Red Bull's specialty.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ===== CLOSING QUOTE ===== -->
 <div class="quote-block">
   <blockquote>"No country owns pole dance yet. Vietnam will."</blockquote>
@@ -915,6 +2378,40 @@
   <p>Red Bull × Pole Dance Vietnam — Confidential Strategy Document — 2026</p>
   <p style="margin-top: 0.5rem; font-size: 0.65rem;">Built by Ready Clawer One 🦞</p>
 </footer>
+
+<script>
+// Accordion toggle
+function toggleAccordion(header) {
+  const section = header.parentElement;
+  const allSections = document.querySelectorAll('.accordion-section');
+  
+  // Optional: Close other sections (comment out for multi-open behavior)
+  // allSections.forEach(s => {
+  //   if (s !== section) s.classList.remove('open');
+  // });
+  
+  section.classList.toggle('open');
+}
+
+// City filter for studios
+function filterStudios(city) {
+  const cards = document.querySelectorAll('.studio-card');
+  const buttons = document.querySelectorAll('.city-btn');
+  
+  // Update active button
+  buttons.forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  // Filter cards
+  cards.forEach(card => {
+    if (city === 'all' || card.dataset.city === city) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
 
 </body>
 </html>
